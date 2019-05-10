@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/buildpack-deps:stretch
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+          version: 18.06.0-ce
+      - run:
+          name: Build and publish Docker Image
+          command: |
+              TAG=$(grep -e "^RELEASE" install.sh | sed 's/RELEASE="\(.*\)"/\1/')
+              docker build . -t sofietv/tv-automation-meteor-base:$TAG
+              echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+              docker push sofietv/tv-automation-meteor-base:$TAG
+
+workflows:
+  version: 2
+  build and publish:
+    jobs:
+      - build
