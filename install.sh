@@ -30,7 +30,7 @@ run_it () {
 # ~/.meteor, replacing whatever is already there. (~/.meteor is only a cache of
 # packages and package metadata; no personal persistent data is stored there.)
 
-RELEASE="1.8.1"
+RELEASE="1.9"
 
 
 # Now, on to the actual installer!
@@ -213,6 +213,10 @@ Or see the docs at:
 
   docs.meteor.com
 
+Deploy and host your app with Galaxy:
+
+  www.meteor.com/hosting
+
 EOF
 elif type sudo >/dev/null 2>&1; then
   echo "Writing a launcher script to $PREFIX/bin/meteor for your convenience."
@@ -240,6 +244,10 @@ To get started fast:
 Or see the docs at:
 
   docs.meteor.com
+
+Deploy and host your app with Galaxy:
+
+  www.meteor.com/hosting
 
 EOF
   else
