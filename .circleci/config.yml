@@ -2,11 +2,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/buildpack-deps:stretch
+      - image: circleci/buildpack-deps:buster
     steps:
       - checkout
       - setup_remote_docker:
-          version: 18.06.0-ce
+          version: 19.03.8
       - run:
           name: Build and publish Docker Image
           command: |
